@@ -1,11 +1,12 @@
 //В умові на LMS к ДЗ-5 не має бути файлу task-4.js!!!
-//А без ньго повертає на доопрацювання!!!
+//А без нього повертає на доопрацювання!!!
 
 const getTotalBalanceByGender = (users, gender) => {
-  let totalBalance = 0;
-  users
+  let totalBalance = users
     .filter(user => user.gender === gender)
-    .map(user => (totalBalance += user.balance));
+    .reduce((total, user) => {
+      return total + user.balance;
+    }, 0);
   return totalBalance;
 };
 
